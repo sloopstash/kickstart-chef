@@ -15,7 +15,7 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-stack
+      - chef-net
   redis-node-2:
     image: chef/node:centos
     container_name: redis-node-2
@@ -31,7 +31,7 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-stack
+      - chef-net
   redis-node-3:
     image: chef/node:centos
     container_name: redis-node-3
@@ -47,8 +47,8 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-stack
+      - chef-net
 networks:
-  chef-stack:
+  chef-net:
     external:
-      name: chef-stack
+      name: chef-net
