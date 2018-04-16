@@ -1,0 +1,9 @@
+secrets/*.pem
+secrets/*.pub
+secrets/node*
+secrets/chef*
+trusted_certs/*
+syntaxcache/*
+.vagrant/*
+*.log
+tmp/*
