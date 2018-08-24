@@ -1,13 +1,10 @@
 version: '3'
 services:
   redis-node-1:
-    image: chef/node:centos
+    image: amazonlinux/chef:v1
     container_name: redis-node-1
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
     hostname: redis-node-1
-    ports:
-      - "3001:6379"
-      - "2201:22"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
@@ -15,15 +12,13 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-net
+      chef-net:
+        ipv4_address: 100.1.1.10
   redis-node-2:
-    image: chef/node:centos
+    image: amazonlinux/chef:v1
     container_name: redis-node-2
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
     hostname: redis-node-2
-    ports:
-      - "3002:6379"
-      - "2202:22"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
@@ -31,15 +26,13 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-net
+      chef-net:
+        ipv4_address: 100.1.1.20
   redis-node-3:
-    image: chef/node:centos
+    image: amazonlinux/chef:v1
     container_name: redis-node-3
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
     hostname: redis-node-3
-    ports:
-      - "3003:6379"
-      - "2203:22"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
@@ -47,7 +40,8 @@ services:
     extra_hosts:
       - "chef-server:100.1.1.0"
     networks:
-      - chef-net
+      chef-net:
+        ipv4_address: 100.1.1.30
 networks:
   chef-net:
     external:

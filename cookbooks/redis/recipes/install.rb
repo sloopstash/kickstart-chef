@@ -1,7 +1,7 @@
 Chef::Log.info '***** install redis. *****'
 # install system packages required by redis.
 yum_package 'install system packages' do
-  package_name ['jemalloc','tcl']
+  package_name ['tcl']
   action :install
 end
 

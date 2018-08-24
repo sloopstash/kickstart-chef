@@ -107,7 +107,7 @@ Vagrant.configure("2") do |config|
     chef-manage-ctl restart
     opscode-manage-ctl restart
     opscode-push-jobs-server-ctl restart
-    chef-server-ctl user-create devops ss devops devops@sloopstash.com 'sloopstashdevops123' -f /secrets/devops.pem
-    chef-server-ctl org-create sloopstash 'sloopstash' -a devops -f /secrets/sloopstash.pem
+    chef-server-ctl user-create devops Devops SS devops@sloopstash.com 'sloopstashdevops123' -f /secrets/devops.pem
+    chef-server-ctl org-create sloopstash SloopStash -a devops -f /secrets/sloopstash.pem
   SHELL
 end
