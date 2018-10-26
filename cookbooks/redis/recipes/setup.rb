@@ -32,14 +32,6 @@ remote_file "/tmp/redis-#{node['redis']['version']}.tar.gz" do
   end
 end
 
-remote_file '/var/www/customers/public_html/index.html' do
-  source 'http://somesite.com/index.html'
-  owner 'web_admin'
-  group 'web_admin'
-  mode '0755'
-  action :create
-end
-
 # extract redis.
 execute 'extract redis' do
   command "tar xvzf redis-#{node['redis']['version']}.tar.gz"
