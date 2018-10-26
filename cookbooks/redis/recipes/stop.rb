@@ -1,15 +1,14 @@
-Chef::Log.info '***** stop redis. *****'
-# stop redis using supervisorctl.
+# stop redis.
 execute 'stop redis' do
   command <<-EOH
-    #{node['system']['supervisor']['bin_path']} stop redis
-    #{node['system']['supervisor']['bin_path']} remove redis
+    supervisorctl stop redis
+    supervisorctl remove redis
   EOH
   user 'root'
   group 'root'
   returns [0]
   action 'run'
   only_if do
-    File.exists?"#{node['system']['supervisor']['configs_dir']}/redis.ini"
+    File.exists?'/etc/supervisord.d/redis.ini'
   end
 end

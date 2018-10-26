@@ -1,47 +1,37 @@
 version: '3'
 services:
-  redis-node-1:
-    image: amazonlinux/chef:v1
-    container_name: redis-node-1
+  app:
+    image: sloopstash/chef:v1
+    container_name: crm-app
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
-    hostname: redis-node-1
+    hostname: crm-app
+    ports:
+      - "8080:80"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
       - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
     extra_hosts:
-      - "chef-server:100.1.1.0"
+      - "chef-server:100.3.1.0"
+    depends_on:
+      - redis
     networks:
       chef-net:
-        ipv4_address: 100.1.1.10
-  redis-node-2:
-    image: amazonlinux/chef:v1
-    container_name: redis-node-2
+        ipv4_address: 100.3.1.10
+  redis:
+    image: sloopstash/chef:v1
+    container_name: crm-redis
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
-    hostname: redis-node-2
+    hostname: crm-redis
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
       - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
     extra_hosts:
-      - "chef-server:100.1.1.0"
+      - "chef-server:100.3.1.0"
     networks:
       chef-net:
-        ipv4_address: 100.1.1.20
-  redis-node-3:
-    image: amazonlinux/chef:v1
-    container_name: redis-node-3
-    command: "/usr/bin/supervisord -c /etc/supervisord.conf"
-    hostname: redis-node-3
-    volumes:
-      - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
-      - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
-      - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
-    extra_hosts:
-      - "chef-server:100.1.1.0"
-    networks:
-      chef-net:
-        ipv4_address: 100.1.1.30
+        ipv4_address: 100.3.1.20
 networks:
   chef-net:
     external:

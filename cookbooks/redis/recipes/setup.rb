@@ -1,15 +1,14 @@
-Chef::Log.info '***** install redis. *****'
-# install system packages required by redis.
+# install system packages.
 yum_package 'install system packages' do
   package_name ['tcl']
   action :install
 end
 
-# create redis directories in loop.
+# create redis directories.
 [
-  node['redis']['configs_dir'],
+  node['redis']['config_dir'],
   node['redis']['system_dir'],
-  node['redis']['logs_dir'],
+  node['redis']['log_dir'],
   node['redis']['data_dir']
 ].each do |dir|
   directory dir do
@@ -33,8 +32,16 @@ remote_file "/tmp/redis-#{node['redis']['version']}.tar.gz" do
   end
 end
 
-# extract redis from downloaded source.
-execute 'extract redis source from archive' do
+remote_file '/var/www/customers/public_html/index.html' do
+  source 'http://somesite.com/index.html'
+  owner 'web_admin'
+  group 'web_admin'
+  mode '0755'
+  action :create
+end
+
+# extract redis.
+execute 'extract redis' do
   command "tar xvzf redis-#{node['redis']['version']}.tar.gz"
   cwd '/tmp'
   user 'root'
@@ -46,8 +53,8 @@ execute 'extract redis source from archive' do
   end
 end
 
-# compile and install redis from the downloaded source.
-execute 'compile and install redis from source' do
+# compile and install redis.
+execute 'compile and install redis' do
   command <<-EOH
     make distclean
     make
@@ -63,8 +70,8 @@ execute 'compile and install redis from source' do
   end
 end
 
-# cleanup the source and archives.
-execute 'cleanup build' do
+# cleanup source.
+execute 'cleanup source' do
   command 'rm -rf redis-*'
   cwd '/tmp'
   user 'root'

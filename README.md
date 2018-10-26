@@ -1,2 +1,2 @@
 # Kickstart Chef
-Completely manage Chef and its components. Also provision nodes using Docker.
+Deploy sample CRM application and Redis server on Docker containers in single shot using Chef cookbooks. The application is built on Python Flask micro framework and use Redis as database.
