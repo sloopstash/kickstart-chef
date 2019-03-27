@@ -6,15 +6,3 @@ default['redis'] = {
   'data_dir' => '/var/lib/redis',
   'log_dir' => '/var/log/redis'
 }
-
-
-user = {
-  'name' => 'john',
-  'age' => 29,
-  'work' => 'professional',
-  'languages' => ['tamil','english'],
-  'emplyment' => {
-    'comp_1' => 'tbw',
-    'comp_2' => 'sloop'
-  }
-}
