@@ -10,7 +10,7 @@ services:
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
-      - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
+      - /opt/kickstart-chef/supervisor/conf/push-jobs-client.ini:/etc/supervisord.d/push-jobs-client.ini
     extra_hosts:
       - "chef-server:100.3.1.0"
     depends_on:
@@ -26,7 +26,7 @@ services:
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
-      - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
+      - /opt/kickstart-chef/supervisor/conf/push-jobs-client.ini:/etc/supervisord.d/push-jobs-client.ini
     extra_hosts:
       - "chef-server:100.3.1.0"
     networks:

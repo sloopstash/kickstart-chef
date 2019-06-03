@@ -19,18 +19,18 @@ RUN set -x \
   && chmod 400 /root/.ssh/config
 ADD secrets/chef-node.pub /root/.ssh/authorized_keys
 
-# install chef-client.
+# install chef infra client.
 RUN set -x \
   && mkdir /var/log/chef \
-  && wget https://packages.chef.io/files/stable/chef/14.3.37/el/7/chef-14.3.37-1.el7.x86_64.rpm --quiet \
-  && rpm -Uvh chef-14.3.37-1.el7.x86_64.rpm \
-  && rm -rf chef-14.3.37-1.el7.x86_64.rpm
+  && wget https://packages.chef.io/files/stable/chef/15.0.300/el/7/chef-15.0.300-1.el7.x86_64.rpm --quiet \
+  && rpm -Uvh chef-15.0.300-1.el7.x86_64.rpm \
+  && rm -rf chef-15.0.300-1.el7.x86_64.rpm
 
-# install chef push-jobs client.
+# install push jobs client.
 RUN set -x \
-  && wget https://packages.chef.io/files/stable/push-jobs-client/2.5.0/el/7/push-jobs-client-2.5.0-1.el7.x86_64.rpm --quiet \
-  && rpm -Uvh push-jobs-client-2.5.0-1.el7.x86_64.rpm \
-  && rm -rf push-jobs-client-2.5.0-1.el7.x86_64.rpm
+  && wget https://packages.chef.io/files/stable/push-jobs-client/2.5.6/el/7/push-jobs-client-2.5.6-1.el7.x86_64.rpm --quiet \
+  && rpm -Uvh push-jobs-client-2.5.6-1.el7.x86_64.rpm \
+  && rm -rf push-jobs-client-2.5.6-1.el7.x86_64.rpm
 
 # cleanup history.
 RUN history -c

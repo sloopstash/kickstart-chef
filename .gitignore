@@ -1,3 +1,7 @@
+downloads/*.rpm
+downloads/*.deb
+downloads/*.tar.gz
+downloads/*.zip
 secrets/*.pem
 secrets/*.pub
 secrets/node*
