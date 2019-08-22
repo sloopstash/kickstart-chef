@@ -90,6 +90,7 @@ Vagrant.configure("2") do |config|
     wget https://packages.chef.io/files/stable/chef-server/13.0.17/el/7/chef-server-core-13.0.17-1.el7.x86_64.rpm --quiet
     yum install -y chef-server-core-13.0.17-1.el7.x86_64.rpm
     rm chef-server-core-13.0.17-1.el7.x86_64.rpm
+    echo 'api_fqdn "chef-infra-server"' >> /etc/opscode/chef-server.rb
     chef-server-ctl reconfigure --chef-license=accept
     chef-server-ctl install chef-manage
     chef-server-ctl reconfigure

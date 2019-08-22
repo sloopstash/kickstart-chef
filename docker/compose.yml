@@ -5,7 +5,7 @@ services:
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
     hostname: crm-app
     ports:
-      - "2221-2225:22"
+      - "2241-2245:22"
       - "8081-8085:80"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
@@ -22,7 +22,7 @@ services:
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
     hostname: crm-redis
     ports:
-      - "2231:22"
+      - "2251:22"
     volumes:
       - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini

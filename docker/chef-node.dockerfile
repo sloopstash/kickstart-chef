@@ -2,7 +2,7 @@
 FROM sloopstash/amazonlinux:v1
 
 # install openssh server and passwd.
-RUN yum install -y openssh-server passwd
+RUN yum install -y openssh-server openssh-clients passwd
 
 # configure openssh server.
 RUN set -x \
@@ -17,7 +17,7 @@ RUN set -x \
   && touch /root/.ssh/config \
   && echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null" >> /root/.ssh/config \
   && chmod 400 /root/.ssh/config
-ADD secrets/chef-node.pub /root/.ssh/authorized_keys
+ADD secret/chef-node.pub /root/.ssh/authorized_keys
 
 # install chef infra client.
 RUN set -x \
