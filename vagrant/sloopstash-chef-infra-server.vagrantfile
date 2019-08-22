@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "secrets/", "/secrets"
+  config.vm.synced_folder "secret/", "/secret"
 
   # SSH credentials to connect to virtual machine.
   config.ssh.username = "vagrant"
@@ -87,5 +87,21 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y wget vim net-tools initscripts gcc make tar bind-utils nc git
+    wget https://packages.chef.io/files/stable/chef-server/13.0.17/el/7/chef-server-core-13.0.17-1.el7.x86_64.rpm
+    yum install -y chef-server-core-13.0.17-1.el7.x86_64.rpm
+    rm chef-server-core-13.0.17-1.el7.x86_64.rpm
+    chef-server-ctl reconfigure
+    chef-server-ctl install chef-manage
+    chef-server-ctl reconfigure
+    chef-manage-ctl reconfigure --accept-license
+    chef-server-ctl install opscode-push-jobs-server
+    chef-server-ctl reconfigure
+    opscode-push-jobs-server-ctl reconfigure --accept-license
+    chef-server-ctl restart
+    chef-manage-ctl restart
+    opscode-manage-ctl restart
+    opscode-push-jobs-server-ctl restart
+    chef-server-ctl user-create tuto Tuto SS tuto@sloopstash.com 'tutosloopstash123' -f /secret/tuto.pem
+    chef-server-ctl org-create sloopstash SloopStash -a tuto -f /secret/sloopstash.pem
   SHELL
 end
