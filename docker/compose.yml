@@ -3,7 +3,6 @@ services:
   app:
     image: sloopstash/chef:v1
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
-    hostname: crm-app
     ports:
       - "2241-2245:22"
       - "8081-8085:80"
@@ -20,7 +19,6 @@ services:
   redis:
     image: sloopstash/chef:v1
     command: "/usr/bin/supervisord -c /etc/supervisord.conf"
-    hostname: crm-redis
     ports:
       - "2251:22"
     volumes:
