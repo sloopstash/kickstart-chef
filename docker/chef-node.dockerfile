@@ -26,7 +26,7 @@ RUN set -x \
   && rpm -Uvh chef-15.2.20-1.el7.x86_64.rpm \
   && rm -rf chef-15.2.20-1.el7.x86_64.rpm
 
-# install push jobs client.
+# install chef push jobs client.
 RUN set -x \
   && wget https://packages.chef.io/files/stable/push-jobs-client/2.5.6/el/7/push-jobs-client-2.5.6-1.el7.x86_64.rpm --quiet \
   && rpm -Uvh push-jobs-client-2.5.6-1.el7.x86_64.rpm \
