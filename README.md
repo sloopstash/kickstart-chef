@@ -1,2 +1,2 @@
 # Kickstart Chef
-Deploy sample CRM application and Redis server on Docker containers in single shot using Chef cookbooks. The application is built on Python Flask micro framework and use Redis as database.
+The ultimate aim of this Chef starter-kit Git repository is to help you deploy a sample CRM app and Redis database server on Docker containers in singleshot using Chef cookbooks and Chef recipes. You need user manual to operate the starter-kit. Contact us to get the user manual and start learning Chef today.
