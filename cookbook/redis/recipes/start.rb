@@ -1,7 +1,6 @@
 # start redis.
 execute 'start redis' do
   command <<-EOH
-    supervisorctl reread redis
     supervisorctl update redis
     supervisorctl start redis
   EOH
