@@ -1,2 +1,1 @@
-1. place chef user and chef organization *.pem private keys here.
-2. place chef-node and chef-server ssh keys here.
+1. place user and organization private keys obtained from chef infra server.
