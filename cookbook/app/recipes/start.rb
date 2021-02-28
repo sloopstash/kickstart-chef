@@ -1,5 +1,5 @@
-# start app.
-execute 'start app' do
+# Start App.
+execute 'Start App' do
   command <<-EOH
     supervisorctl update app
     supervisorctl start app
@@ -13,8 +13,8 @@ execute 'start app' do
   end
 end
 
-# start nginx.
-execute 'start nginx' do
+# Start Nginx.
+execute 'Start Nginx' do
   command <<-EOH
     supervisorctl update nginx
     supervisorctl start nginx

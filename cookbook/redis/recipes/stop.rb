@@ -1,5 +1,5 @@
-# stop redis.
-execute 'stop redis' do
+# Stop Redis.
+execute 'Stop Redis' do
   command <<-EOH
     supervisorctl stop redis
     supervisorctl remove redis

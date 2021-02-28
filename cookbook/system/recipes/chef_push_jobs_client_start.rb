@@ -1,5 +1,5 @@
-# start chef push jobs client.
-execute 'start chef push jobs client' do
+# Start Chef push jobs client.
+execute 'Start Chef push jobs client' do
   command <<-EOH
     supervisorctl update chef-push-jobs-client
     supervisorctl start chef-push-jobs-client

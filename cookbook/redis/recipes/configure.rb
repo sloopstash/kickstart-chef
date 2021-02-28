@@ -3,7 +3,7 @@ system_dir = node['redis']['system_dir']
 log_dir = node['redis']['log_dir']
 data_dir = node['redis']['data_dir']
 
-# configure redis.
+# Configure Redis.
 template "#{config_dir}/redis.conf" do
   source 'redis.conf.erb'
   owner 'root'
@@ -18,8 +18,8 @@ template "#{config_dir}/redis.conf" do
   action 'create'
 end
 
-# create empty pid file.
-execute 'create empty pid file' do
+# Create empty PID file.
+execute 'Create empty PID file' do
   command "touch #{system_dir}/process.pid"
   user 'root'
   group 'root'
@@ -30,7 +30,7 @@ execute 'create empty pid file' do
   end
 end
 
-# configure supervisor for redis.
+# Configure Supervisor for Redis.
 template '/etc/supervisord.d/redis.ini' do
   source 'supervisor.ini.erb'
   owner 'root'

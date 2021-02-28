@@ -1,5 +1,5 @@
-# stop chef push jobs client.
-execute 'stop chef push jobs client' do
+# Stop Chef push jobs client.
+execute 'Stop Chef push jobs client' do
   command <<-EOH
     supervisorctl stop chef-push-jobs-client
     supervisorctl remove chef-push-jobs-client

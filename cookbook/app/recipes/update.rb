@@ -1,7 +1,7 @@
 deploy_dir = node['app']['deploy_dir']
 repo_url = node['app']['repo_url']
 
-# fetch app git repository.
+# Fetch App Git repository.
 git deploy_dir do
   repository repo_url
   revision 'master'
@@ -11,8 +11,8 @@ git deploy_dir do
   action 'sync'
 end
 
-# install app python packages.
-execute 'install app python packages' do
+# Install App Python packages.
+execute 'Install App Python packages' do
   command 'pip install -r requirements.txt'
   cwd deploy_dir
   user 'root'

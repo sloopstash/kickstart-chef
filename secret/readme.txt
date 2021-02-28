@@ -1,1 +1,1 @@
-- place user and organization private keys obtained from chef infra server.
+- Place user and organization private keys obtained from Chef infra server.

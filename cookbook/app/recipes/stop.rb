@@ -1,5 +1,5 @@
-# stop app.
-execute 'stop app' do
+# Stop App.
+execute 'Stop App' do
   command <<-EOH
     supervisorctl stop app
     supervisorctl remove app
@@ -13,8 +13,8 @@ execute 'stop app' do
   end
 end
 
-# stop nginx.
-execute 'stop nginx' do
+# Stop Nginx.
+execute 'Stop Nginx' do
   command <<-EOH
     supervisorctl stop nginx
     supervisorctl remove nginx

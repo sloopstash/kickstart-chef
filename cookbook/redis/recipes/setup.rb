@@ -1,10 +1,10 @@
-# install system packages.
-yum_package 'install system packages' do
+# Install system packages.
+yum_package 'Install system packages' do
   package_name ['tcl']
   action :install
 end
 
-# create redis directories.
+# Create Redis directories.
 [
   node['redis']['config_dir'],
   node['redis']['system_dir'],
@@ -23,7 +23,7 @@ end
   end
 end
 
-# download redis.
+# Download Redis.
 remote_file "/tmp/redis-#{node['redis']['version']}.tar.gz" do
   source "http://download.redis.io/releases/redis-#{node['redis']['version']}.tar.gz"
   mode 0644
@@ -32,8 +32,8 @@ remote_file "/tmp/redis-#{node['redis']['version']}.tar.gz" do
   end
 end
 
-# extract redis.
-execute 'extract redis' do
+# Extract Redis.
+execute 'Extract Redis' do
   command "tar xvzf redis-#{node['redis']['version']}.tar.gz"
   cwd '/tmp'
   user 'root'
@@ -45,8 +45,8 @@ execute 'extract redis' do
   end
 end
 
-# compile and install redis.
-execute 'compile and install redis' do
+# Compile and install Redis.
+execute 'Compile and install Redis' do
   command <<-EOH
     make distclean
     make
@@ -62,8 +62,8 @@ execute 'compile and install redis' do
   end
 end
 
-# cleanup source.
-execute 'cleanup source' do
+# Cleanup source.
+execute 'Cleanup source' do
   command 'rm -rf redis-*'
   cwd '/tmp'
   user 'root'

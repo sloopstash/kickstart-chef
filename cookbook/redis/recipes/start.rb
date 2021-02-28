@@ -1,5 +1,5 @@
-# start redis.
-execute 'start redis' do
+# Start Redis.
+execute 'Start Redis' do
   command <<-EOH
     supervisorctl update redis
     supervisorctl start redis

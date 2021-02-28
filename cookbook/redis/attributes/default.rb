@@ -1,4 +1,4 @@
-# default attributes.
+# Default attributes.
 default['redis'] = {
   'version' => '4.0.9',
   'config_dir' => '/etc/redis',

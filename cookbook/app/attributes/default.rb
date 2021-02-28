@@ -1,4 +1,4 @@
-# default attributes.
+# Default attributes.
 default['app']['repo_url'] = 'https://github.com/sloopstash/kickstart-flask'
 default['app']['deploy_dir'] = '/opt/app'
 default['app']['nginx'] = {
