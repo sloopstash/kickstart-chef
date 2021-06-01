@@ -15,10 +15,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
   # Define VirtualBox machine name.
-  config.vm.define "sloopstash-chef-automate-server"
+  config.vm.define "sloopstash-chef-automate"
 
   # Set virtual machine hostname.
-  config.vm.hostname = "sloopstash-chef-automate-server"
+  config.vm.hostname = "sloopstash-chef-automate"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -29,17 +29,16 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  #	config.vm.network "forwarded_port", guest: 443, host: 443, auto_correct: false
+  # config.vm.network "forwarded_port", guest: 443, host: 443, auto_correct: false
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
   # via 127.0.0.1 to disable public access
   # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-  config.vm.network "forwarded_port", guest: 443, host: 1443, auto_correct: false
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.99.112"
+  config.vm.network "private_network", ip: "192.168.99.111"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -66,13 +65,13 @@ Vagrant.configure("2") do |config|
     vb.gui = false
   
     # Customize the amount of memory on the VM.
-    vb.memory = "3072"
+    vb.memory = "4096"
 
     # Set number of CPU's for the VM.
     vb.cpus = "1"
 
     # VirtualBox machine name.
-    vb.name = "sloopstash-chef-automate-server"
+    vb.name = "sloopstash-chef-automate"
   end
   #
   # View the documentation for the provider you are using for more

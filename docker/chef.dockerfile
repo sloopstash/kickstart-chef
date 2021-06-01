@@ -22,9 +22,9 @@ ADD secret/node.pub /root/.ssh/authorized_keys
 # Install Chef infra client.
 RUN set -x \
   && mkdir /var/log/chef \
-  && wget https://packages.chef.io/files/stable/chef/15.2.20/el/7/chef-15.2.20-1.el7.x86_64.rpm --quiet \
-  && rpm -Uvh chef-15.2.20-1.el7.x86_64.rpm \
-  && rm -rf chef-15.2.20-1.el7.x86_64.rpm
+  && wget https://packages.chef.io/files/stable/chef/17.1.35/amazon/2/chef-17.1.35-1.el7.x86_64.rpm --quiet \
+  && rpm -Uvh chef-17.1.35-1.el7.x86_64.rpm \
+  && rm -rf chef-17.1.35-1.el7.x86_64.rpm
 
 # Install Chef push jobs client.
 RUN set -x \
