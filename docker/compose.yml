@@ -11,7 +11,7 @@ services:
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
       - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
     extra_hosts:
-      - "chef-infra-server:100.3.1.0"
+      - "sloopstash-chef-infra-server:100.3.1.0"
     depends_on:
       - redis
     networks:
@@ -26,7 +26,7 @@ services:
       - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
       - /opt/kickstart-chef/supervisor/conf/chef-push-jobs-client.ini:/etc/supervisord.d/chef-push-jobs-client.ini
     extra_hosts:
-      - "chef-infra-server:100.3.1.0"
+      - "sloopstash-chef-infra-server:100.3.1.0"
     networks:
       - chef-net
 networks:
