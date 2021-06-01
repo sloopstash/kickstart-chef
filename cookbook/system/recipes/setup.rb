@@ -1,2 +1,2 @@
 # Include recipe.
-include_recipe 'system::chef_push_jobs_client_start'
+include_recipe 'system::start'
