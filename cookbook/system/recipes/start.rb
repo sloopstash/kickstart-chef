@@ -6,7 +6,7 @@ execute 'Start Chef client' do
   EOH
   user 'root'
   group 'root'
-  returns [0]
+  returns [0,7]
   action 'run'
   only_if do
     File.exists?'/etc/supervisord.d/chef-client.ini'
