@@ -1,5 +1,5 @@
-# Stop Chef client.
-execute 'Stop Chef client' do
+# Stop Chef infra client.
+execute 'Stop Chef infra client' do
   command <<-EOH
     supervisorctl stop chef-client
     supervisorctl remove chef-client

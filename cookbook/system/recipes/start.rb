@@ -1,5 +1,5 @@
-# Start Chef client.
-execute 'Start Chef client' do
+# Start Chef infra client.
+execute 'Start Chef infra client' do
   command <<-EOH
     supervisorctl update chef-client
     supervisorctl start chef-client
