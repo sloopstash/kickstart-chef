@@ -1,0 +1,27 @@
+[telemetry]
+enable = false
+dev = false
+
+[log]
+level = "debug"
+
+[connection]
+default_protocol = "ssh"
+default_user = "root"
+
+[chef]
+trusted_certs_dir = "trusted_certs"
+cookbook_repo_paths = [
+  "cookbook"
+]
+
+[updates]
+enable = true
+channel = "stable"
+
+[data_collector]
+url = "https://chef-automate.sloopstash-dev.internal/data-collector/v0/"
+token = "xxxxxxxxxxxxxxxxxxx"
+
+[dev]
+spinner = true
