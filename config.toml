@@ -3,7 +3,7 @@ enable = false
 dev = false
 
 [log]
-level = "debug"
+level = "error"
 
 [connection]
 default_protocol = "ssh"

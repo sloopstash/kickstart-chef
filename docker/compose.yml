@@ -12,6 +12,7 @@ services:
       - /opt/kickstart-chef/supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
     extra_hosts:
       - "chef-infra-server.sloopstash-dev.internal:100.3.1.0"
+      - "chef-automate.sloopstash-dev.internal:100.3.1.0"
     depends_on:
       - redis
     networks:
@@ -27,6 +28,7 @@ services:
       - /opt/kickstart-chef/supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
     extra_hosts:
       - "chef-infra-server.sloopstash-dev.internal:100.3.1.0"
+      - "chef-automate.sloopstash-dev.internal:100.3.1.0"
     networks:
       - chef-net
 networks:

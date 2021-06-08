@@ -1,4 +1,5 @@
 current_dir = File.dirname(__FILE__)
+local_mode false
 log_level :info
 log_location STDOUT
 node_name "tuto"
