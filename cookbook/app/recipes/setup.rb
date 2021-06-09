@@ -15,6 +15,9 @@ end
 yum_package 'Install Nginx' do
   source "/tmp/nginx-#{nginx_version}.el7_4.ngx.x86_64.rpm"
   action :install
+  not_if do
+    File.exists?"/usr/sbin/nginx"
+  end
 end
 
 # Configure Nginx.
@@ -41,6 +44,9 @@ end
 yum_package 'Install Git' do
   package_name ['git']
   action :install
+  not_if do
+    File.exists?"/usr/bin/git"
+  end
 end
 
 # Create App deploy directory.

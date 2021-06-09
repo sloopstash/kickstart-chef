@@ -30,6 +30,9 @@ remote_file "/tmp/redis-#{node['redis']['version']}.tar.gz" do
   not_if do
     File.exists?"/tmp/redis-#{node['redis']['version']}.tar.gz"
   end
+  not_if do
+    File.exists?"/usr/local/bin/redis-server"
+  end
 end
 
 # Extract Redis.
@@ -42,6 +45,9 @@ execute 'Extract Redis' do
   action 'run'
   only_if do
     File.exists?"/tmp/redis-#{node['redis']['version']}.tar.gz"
+  end
+  not_if do
+    File.exists?"/usr/local/bin/redis-server"
   end
 end
 
@@ -59,6 +65,9 @@ execute 'Compile and install Redis' do
   action 'run'
   only_if do
     File.exists?"/tmp/redis-#{node['redis']['version']}"
+  end
+  not_if do
+    File.exists?"/usr/local/bin/redis-server"
   end
 end
 
