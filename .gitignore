@@ -6,6 +6,7 @@ secret/*.pem
 secret/*.pub
 secret/node*
 secret/chef*
+chef_guid
 trusted_certs/*
 syntaxcache/*
 .vagrant/*

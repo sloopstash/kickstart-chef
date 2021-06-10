@@ -7,9 +7,9 @@ services:
       - "2241-2245:22"
       - "8081-8085:80"
     volumes:
-      - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
-      - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
-      - /opt/kickstart-chef/supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
+      - ./supervisor/conf/main.conf:/etc/supervisord.conf
+      - ./supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
+      - ./supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
     extra_hosts:
       - "chef-infra-server.sloopstash-dev.internal:100.3.1.0"
       - "chef-automate.sloopstash-dev.internal:100.3.1.0"
@@ -23,9 +23,9 @@ services:
     ports:
       - "2251:22"
     volumes:
-      - /opt/kickstart-chef/supervisor/conf/main.conf:/etc/supervisord.conf
-      - /opt/kickstart-chef/supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
-      - /opt/kickstart-chef/supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
+      - ./supervisor/conf/main.conf:/etc/supervisord.conf
+      - ./supervisor/conf/sshd.ini:/etc/supervisord.d/sshd.ini
+      - ./supervisor/conf/chef-client.ini:/etc/supervisord.d/chef-client.ini
     extra_hosts:
       - "chef-infra-server.sloopstash-dev.internal:100.3.1.0"
       - "chef-automate.sloopstash-dev.internal:100.3.1.0"
