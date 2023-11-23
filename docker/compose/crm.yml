@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  redis:
+    image: sloopstash/chef:v18.3.0
+    entrypoint: /usr/bin/supervisord
+    command: "-c /etc/supervisord.conf"
+    volumes:
+      - ../../supervisor/conf/server.conf:/etc/supervisord.conf
+      - ../../ssh/conf/supervisor.ini:/etc/supervisord.d/ssh.ini
+      - ../../infra-client/conf/supervisor.ini:/etc/supervisord.d/chef-infra-client.ini
+    networks:
+      - common
+  app:
+    image: sloopstash/chef:v18.3.0
+    entrypoint: /usr/bin/supervisord
+    command: "-c /etc/supervisord.conf"
+    volumes:
+      - ../../supervisor/conf/server.conf:/etc/supervisord.conf
+      - ../../ssh/conf/supervisor.ini:/etc/supervisord.d/ssh.ini
+      - ../../infra-client/conf/supervisor.ini:/etc/supervisord.d/chef-infra-client.ini
+    depends_on:
+      - redis
+    networks:
+      - common
+  nginx:
+    image: sloopstash/chef:v18.3.0
+    entrypoint: /usr/bin/supervisord
+    command: "-c /etc/supervisord.conf"
+    volumes:
+      - ../../supervisor/conf/server.conf:/etc/supervisord.conf
+      - ../../ssh/conf/supervisor.ini:/etc/supervisord.d/ssh.ini
+      - ../../infra-client/conf/supervisor.ini:/etc/supervisord.d/chef-infra-client.ini
+    depends_on:
+      - app
+    networks:
+      - common
+networks:
+  common:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${CRM_NETWORK}
