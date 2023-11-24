@@ -96,15 +96,9 @@ Vagrant.configure("2") do |config|
     sloopstash_chef_automate.vm.hostname = "sloopstash-chef-automate"
     sloopstash_chef_automate.vm.network "private_network", ip: "192.168.101.71"
     sloopstash_chef_automate.vm.provider "virtualbox" do |vb|
+      vb.memory = "6144"
       vb.name = "sloopstash-chef-automate"
     end
-    sloopstash_chef_automate.vm.provision "shell", inline: <<-SHELL
-      touch /etc/sysctl.d/chef-automate.conf
-      echo 'vm.max_map_count=262144' | tee -a /etc/sysctl.d/chef-automate.conf
-      echo 'vm.dirty_expire_centisecs=20000' | tee -a /etc/sysctl.d/chef-automate.conf
-      sysctl -p /etc/sysctl.d/chef-automate.conf
-      echo '192.168.101.72  chef-infra-server.sloopstash-dev.internal' | tee -a /etc/hosts
-    SHELL
   end
   config.vm.define "sloopstash-chef-infra-server" do |sloopstash_chef_infra_server|
     sloopstash_chef_infra_server.vm.hostname = "sloopstash-chef-infra-server"
@@ -112,8 +106,5 @@ Vagrant.configure("2") do |config|
     sloopstash_chef_infra_server.vm.provider "virtualbox" do |vb|
       vb.name = "sloopstash-chef-infra-server"
     end
-    sloopstash_chef_infra_server.vm.provision "shell", inline: <<-SHELL
-      echo '192.168.101.71  chef-automate.sloopstash-dev.internal' | tee -a /etc/hosts
-    SHELL
   end
 end

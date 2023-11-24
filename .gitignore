@@ -1,11 +1,8 @@
-downloads/*.rpm
-downloads/*.deb
-downloads/*.tar.gz
-downloads/*.zip
 secret/*.pem
 secret/*.pub
 secret/node*
 secret/chef*
+**/secret/*
 chef_guid
 trusted_certs/*
 syntaxcache/*
