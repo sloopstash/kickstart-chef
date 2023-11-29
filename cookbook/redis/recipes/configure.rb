@@ -1,17 +1,24 @@
-config_dir = node['redis']['config_dir']
-system_dir = node['redis']['system_dir']
-log_dir = node['redis']['log_dir']
 data_dir = node['redis']['data_dir']
+log_dir = node['redis']['log_dir']
+conf_dir = node['redis']['conf_dir']
+system_dir = node['redis']['system_dir']
+exec_dir = node['redis']['exec_dir']
+supervisor_conf_dir = node['system']['supervisor']['conf_dir']
+
+server_conf_path = "#{conf_dir}/server.conf"
+init_conf_path = "#{system_dir}/supervisor.ini"
+server_log_path = "#{log_dir}/server.log"
+server_pid_path = "#{system_dir}/process.pid"
 
 # Configure Redis.
-template "#{config_dir}/redis.conf" do
-  source 'redis.conf.erb'
+template server_conf_path do
+  source 'server.conf.erb'
   owner 'root'
   group 'root'
   variables(
-    'system_dir'=>system_dir,
-    'log_dir'=>log_dir,
-    'data_dir'=>data_dir
+    'data_dir'=>data_dir,
+    'pid_path'=>server_pid_path,
+    'log_path'=>server_log_path
   )
   mode 0600
   backup false
@@ -20,26 +27,38 @@ end
 
 # Create empty PID file.
 execute 'Create empty PID file' do
-  command "touch #{system_dir}/process.pid"
+  command "touch #{server_pid_path}"
   user 'root'
   group 'root'
   returns [0]
   action 'run'
   not_if do
-    File.exists?"#{system_dir}/process.pid"
+    File.exists?server_pid_path
   end
 end
 
 # Configure Supervisor for Redis.
-template '/etc/supervisord.d/redis.ini' do
+template init_conf_path do
   source 'supervisor.ini.erb'
   owner 'root'
   group 'root'
   variables(
-    'config_dir'=>config_dir,
-    'system_dir'=>system_dir
+    'server_conf_path'=>server_conf_path,
+    'server_pid_path'=>server_pid_path
   )
-  mode 0644
+  mode 0600
   backup false
   action 'create'
+end
+
+# Symlink Supervisor configuration.
+execute 'Symlink Supervisor configuration' do
+  command "ln -sf #{init_conf_path} #{supervisor_conf_dir}/redis.ini"
+  user 'root'
+  group 'root'
+  returns [0]
+  action 'run'
+  only_if do
+    File.exists?init_conf_path
+  end
 end

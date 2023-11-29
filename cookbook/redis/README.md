@@ -1,2 +1,4 @@
-## Redis Cookbook
-A cookbook to deploy Redis.
+Redis Chef cookbook
+===================
+
+Deploy and manage Redis service in the machine.

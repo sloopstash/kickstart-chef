@@ -1,2 +1,4 @@
-## System Cookbook
-A cookbook to manage OS resources.
+System Chef cookbook
+====================
+
+Deploy and manage operating system services and resources in the machine.

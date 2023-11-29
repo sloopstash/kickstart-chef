@@ -1,8 +1,10 @@
-# Default attributes.
-default['redis'] = {
-  'version' => '4.0.9',
-  'config_dir' => '/etc/redis',
-  'system_dir' => '/var/run/redis',
-  'data_dir' => '/var/lib/redis',
-  'log_dir' => '/var/log/redis'
-}
+default['redis']['organization'] = 'sloopstash'
+default['redis']['environment'] = 'stg'
+default['redis']['release_version'] = '4.0.9'
+default['redis']['root_dir'] = '/opt/redis'
+default['redis']['data_dir'] = '/opt/redis/data'
+default['redis']['log_dir'] = '/opt/redis/log'
+default['redis']['conf_dir'] = '/opt/redis/conf'
+default['redis']['script_dir'] = '/opt/redis/script'
+default['redis']['system_dir'] = '/opt/redis/system'
+default['redis']['exec_dir'] = '/usr/local/bin'

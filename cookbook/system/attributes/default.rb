@@ -1,4 +1,7 @@
-# Cookbook attributes.
+default['system']['infrastructure']['type'] = 'on-premise'
+default['system']['infrastructure']['provider'] = 'host'
+default['system']['infrastructure']['service'] = 'docker'
+default['system']['infrastructure']['region'] = nil
 default['system']['user'] = 'tuto'
 default['system']['group'] = 'tuto'
 default['system']['kernel']['vm.swappiness'] = 0
@@ -11,3 +14,7 @@ default['system']['kernel']['net.ipv4.ip_forward'] = 1
 default['system']['kernel']['net.bridge.bridge-nf-call-iptables'] = 1
 default['system']['security_limit']['open_files'] = 65536
 default['system']['security_limit']['memory_lock'] = 'unlimited'
+default['system']['supervisor']['conf_dir'] = '/etc/supervisord.d'
+default['system']['supervisor']['exec_dir'] = '/usr/bin'
+default['system']['supervisor']['conf_path'] = '/etc/supervisord.conf'
+default['system']['organization'] = 'sloopstash'
