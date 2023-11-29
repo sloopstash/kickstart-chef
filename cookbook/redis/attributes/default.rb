@@ -1,3 +1,4 @@
+# Set attributes.
 default['redis']['organization'] = 'sloopstash'
 default['redis']['environment'] = 'stg'
 default['redis']['release_version'] = '4.0.9'

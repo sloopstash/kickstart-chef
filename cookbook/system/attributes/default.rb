@@ -1,3 +1,4 @@
+# Set attributes.
 default['system']['infrastructure']['type'] = 'on-premise'
 default['system']['infrastructure']['provider'] = 'host'
 default['system']['infrastructure']['service'] = 'docker'

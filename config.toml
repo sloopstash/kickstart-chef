@@ -20,7 +20,7 @@ enable = true
 channel = "stable"
 
 [data_collector]
-url = "https://chef-automate.sloopstash-dev.internal/data-collector/v0/"
+url = "https://chef-automate.sloopstash.dv/data-collector/v0/"
 token = "xxxxxxxxxxxxxxxxxxx"
 
 [dev]

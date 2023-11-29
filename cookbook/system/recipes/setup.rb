@@ -49,7 +49,3 @@ yum_package 'Install Git' do
   package_name ['git']
   action 'install'
 end
-
-# Include recipes.
-include_recipe 'system::configure'
-include_recipe 'system::start'
