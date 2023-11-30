@@ -1,0 +1,13 @@
+# Set attributes.
+default['nginx']['organization'] = 'sloopstash'
+default['nginx']['environment'] = 'stg'
+default['nginx']['stack'] = 'crm'
+default['nginx']['external_domain'] = 'sloopstash.stg'
+default['nginx']['internal_domain'] = 'sloopstash-stg.internal'
+default['nginx']['release_version'] = '1.14.0'
+default['nginx']['root_dir'] = '/opt/nginx'
+default['nginx']['log_dir'] = '/opt/nginx/log'
+default['nginx']['conf_dir'] = '/opt/nginx/conf'
+default['nginx']['script_dir'] = '/opt/nginx/script'
+default['nginx']['system_dir'] = '/opt/nginx/system'
+default['nginx']['exec_dir'] = '/usr/sbin'

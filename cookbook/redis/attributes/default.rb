@@ -1,6 +1,7 @@
 # Set attributes.
 default['redis']['organization'] = 'sloopstash'
 default['redis']['environment'] = 'stg'
+default['nginx']['stack'] = 'crm'
 default['redis']['release_version'] = '4.0.9'
 default['redis']['root_dir'] = '/opt/redis'
 default['redis']['data_dir'] = '/opt/redis/data'

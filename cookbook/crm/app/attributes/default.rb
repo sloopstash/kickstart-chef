@@ -1,7 +1,12 @@
-# Default attributes.
+# Set attributes.
+default['app']['organization'] = 'sloopstash'
+default['app']['environment'] = 'stg'
+default['app']['external_domain'] = 'sloopstash.stg'
+default['app']['internal_domain'] = 'sloopstash-stg.internal'
+default['app']['root_dir'] = '/opt/app'
+default['app']['source_dir'] = '/opt/app/source'
+default['app']['log_dir'] = '/opt/app/log'
+default['app']['script_dir'] = '/opt/app/script'
+default['app']['system_dir'] = '/opt/app/system'
 default['app']['repo_url'] = 'https://github.com/sloopstash/kickstart-flask'
-default['app']['deploy_dir'] = '/opt/app'
-default['app']['nginx'] = {
-  'version' => '1.14.0-1',
-  'config_dir' => '/etc/nginx'
-}
+default['app']['revision'] = 'master'

@@ -48,4 +48,7 @@ end
 yum_package 'Install Git' do
   package_name ['git']
   action 'install'
+  not_if do
+    File.exists?'/usr/bin/git'
+  end
 end

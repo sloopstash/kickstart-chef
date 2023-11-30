@@ -1,3 +1,7 @@
+infrastructure_type = node['system']['infrastructure']['type']
+infrastructure_provider = node['system']['infrastructure']['provider']
+infrastructure_service = node['system']['infrastructure']['service']
+
 supervisor_conf_dir = node['system']['supervisor']['conf_dir']
 supervisor_exec_dir = node['system']['supervisor']['exec_dir']
 
@@ -32,12 +36,12 @@ end
 # Start Chef infra client.
 execute 'Start Chef infra client' do
   command <<-EOH
-    #{supervisor_client_path} update chef-client
-    #{supervisor_client_path} start chef-client
+    #{supervisor_client_path} update chef-infra-client
+    #{supervisor_client_path} start chef-infra-client
   EOH
   user 'root'
   group 'root'
-  returns [0,7]
+  returns [0,1,7]
   action 'run'
   only_if do
     File.exists?"#{supervisor_conf_dir}/chef-infra-client.ini"

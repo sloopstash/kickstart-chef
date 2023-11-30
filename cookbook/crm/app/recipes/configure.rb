@@ -1,38 +1,54 @@
-deploy_dir = node['app']['deploy_dir']
-nginx_config_dir = node['app']['nginx']['config_dir']
+environment = node['app']['environment']
+external_domain = node['app']['external_domain']
+conf_files = Array.new
 
-# Configure App for Redis.
-template "#{deploy_dir}/config/redis.conf" do
-  source 'redis.conf.erb'
-  owner 'root'
-  group 'root'
-  mode 0600
-  backup false
-  action 'create'
-end
+source_dir = node['app']['source_dir']
+log_dir = node['app']['log_dir']
+conf_dir = "#{source_dir}/config"
+system_dir = node['app']['system_dir']
+supervisor_conf_dir = node['system']['supervisor']['conf_dir']
 
-# Configure Nginx for App.
-template "#{nginx_config_dir}/conf.d/app.conf" do
-  source 'nginx/app.conf.erb'
-  owner 'root'
-  group 'root'
-  variables(
-    'deploy_dir'=>deploy_dir
-  )
-  mode 0600
-  backup false
-  action 'create'
+init_conf_path = "#{system_dir}/supervisor.ini"
+
+# Configure App.
+conf_files.push('app.conf')
+conf_files.each do |file|
+  template "#{conf_dir}/#{file}" do
+    source "#{file}.erb"
+    owner 'root'
+    group 'root'
+    variables(
+      'environment'=>environment,
+      'external_domain'=>external_domain
+    )
+    mode 0600
+    backup false
+    action 'create'
+  end
 end
 
 # Configure Supervisor for App.
-template '/etc/supervisord.d/app.ini' do
+template init_conf_path do
   source 'supervisor.ini.erb'
   owner 'root'
   group 'root'
   variables(
-    'deploy_dir'=>deploy_dir
+    'source_dir'=>source_dir,
+    'log_dir'=>log_dir
   )
   mode 0600
   backup false
   action 'create'
+end
+
+# Symlink Supervisor configuration.
+execute 'Symlink Supervisor configuration' do
+  command "ln -sf #{init_conf_path} #{supervisor_conf_dir}/app.ini"
+  user 'root'
+  group 'root'
+  returns [0]
+  action 'run'
+  only_if do
+    File.exists?init_conf_path
+  end
 end

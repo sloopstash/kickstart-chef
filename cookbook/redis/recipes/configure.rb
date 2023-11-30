@@ -2,7 +2,6 @@ data_dir = node['redis']['data_dir']
 log_dir = node['redis']['log_dir']
 conf_dir = node['redis']['conf_dir']
 system_dir = node['redis']['system_dir']
-exec_dir = node['redis']['exec_dir']
 supervisor_conf_dir = node['system']['supervisor']['conf_dir']
 
 server_conf_path = "#{conf_dir}/server.conf"

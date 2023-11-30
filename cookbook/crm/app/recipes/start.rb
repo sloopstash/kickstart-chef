@@ -1,29 +1,20 @@
+system_dir = node['app']['system_dir']
+supervisor_exec_dir = node['system']['supervisor']['exec_dir']
+
+supervisor_client_path = "#{supervisor_exec_dir}/supervisorctl"
+init_conf_path = "#{system_dir}/supervisor.ini"
+
 # Start App.
 execute 'Start App' do
   command <<-EOH
-    supervisorctl update app
-    supervisorctl start app
+    #{supervisor_client_path} update app
+    #{supervisor_client_path} start app
   EOH
   user 'root'
   group 'root'
-  returns [0]
+  returns [0,1]
   action 'run'
   only_if do
-    File.exists?'/etc/supervisord.d/app.ini'
-  end
-end
-
-# Start Nginx.
-execute 'Start Nginx' do
-  command <<-EOH
-    supervisorctl update nginx
-    supervisorctl start nginx
-  EOH
-  user 'root'
-  group 'root'
-  returns [0]
-  action 'run'
-  only_if do
-    File.exists?'/etc/supervisord.d/nginx.ini'
+    File.exists?init_conf_path
   end
 end

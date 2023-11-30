@@ -23,7 +23,7 @@ services:
     depends_on:
       - redis
     ports:
-      - "2211-2215:22"
+      - "2211-2213:22"
     networks:
       - common
   nginx:
@@ -37,7 +37,7 @@ services:
     depends_on:
       - app
     ports:
-      - "2221-2225:22"
+      - "2221-2222:22"
     networks:
       - common
 networks:

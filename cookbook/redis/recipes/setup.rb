@@ -17,27 +17,6 @@ yum_package 'Install system packages' do
   action 'install'
 end
 
-# Create Redis directories.
-[
-  root_dir,
-  data_dir,
-  log_dir,
-  conf_dir,
-  script_dir,
-  system_dir
-].each do |dir|
-  directory dir do
-    owner 'root'
-    group 'root'
-    recursive true
-    mode 0700
-    action 'create'
-    not_if do
-      File.exists?dir
-    end
-  end
-end
-
 # Download Redis.
 remote_file archive_path do
   source download_url
@@ -86,5 +65,26 @@ execute 'Delete Redis source' do
   action 'run'
   only_if do
     File.exists?source_dir
+  end
+end
+
+# Create Redis directories.
+[
+  root_dir,
+  data_dir,
+  log_dir,
+  conf_dir,
+  script_dir,
+  system_dir
+].each do |dir|
+  directory dir do
+    owner 'root'
+    group 'root'
+    recursive true
+    mode 0700
+    action 'create'
+    not_if do
+      File.exists?dir
+    end
   end
 end
