@@ -38,6 +38,7 @@ services:
       - app
     ports:
       - "2221-2222:22"
+      - "8001-8002:80"
     networks:
       - common
 networks:

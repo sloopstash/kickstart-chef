@@ -1,14 +1,14 @@
-system_dir = node['redis']['system_dir']
+system_dir = node['nginx']['system_dir']
 supervisor_exec_dir = node['system']['supervisor']['exec_dir']
 
 supervisor_client_path = "#{supervisor_exec_dir}/supervisorctl"
 init_conf_path = "#{system_dir}/supervisor.ini"
 
-# Stop Redis.
-execute 'Stop Redis' do
+# Stop Nginx.
+execute 'Stop Nginx' do
   command <<-EOH
-    #{supervisor_client_path} stop redis
-    #{supervisor_client_path} remove redis
+    #{supervisor_client_path} stop nginx
+    #{supervisor_client_path} remove nginx
   EOH
   user 'root'
   group 'root'

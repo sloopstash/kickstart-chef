@@ -12,7 +12,7 @@ default_user = "root"
 [chef]
 trusted_certs_dir = "trusted_certs"
 cookbook_repo_paths = [
-  "cookbook"
+  "cookbook","cookbook/crm"
 ]
 
 [updates]

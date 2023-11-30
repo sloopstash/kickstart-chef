@@ -7,8 +7,8 @@ script_dir = node['nginx']['script_dir']
 system_dir = node['nginx']['system_dir']
 exec_dir = node['nginx']['exec_dir']
 
-download_url = "https://nginx.org/packages/rhel/7/x86_64/RPMS/nginx-#{release_version}.el7_4.ngx.x86_64.rpm"
-package_path = "/tmp/nginx-#{release_version}.el7_4.ngx.x86_64.rpm"
+download_url = "https://nginx.org/packages/rhel/7/x86_64/RPMS/nginx-#{release_version}-1.el7_4.ngx.x86_64.rpm"
+package_path = "/tmp/nginx-#{release_version}-1.el7_4.ngx.x86_64.rpm"
 server_path = "#{exec_dir}/nginx"
 
 # Download Nginx.

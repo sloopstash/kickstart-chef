@@ -3,7 +3,7 @@ worker_processes  1;
 daemon off;
 
 error_log  /var/log/nginx/error.log warn;
-pid        <%=@server_pid_path%>;
+pid        <%=@pid_path%>;
 
 
 events {
