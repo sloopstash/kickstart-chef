@@ -5,17 +5,14 @@ script_dir = node['app']['script_dir']
 system_dir = node['app']['system_dir']
 
 # Install Python.
-execute 'Install Python' do
-  command <<-EOH
-    yum install python-2.7.18
-    yum install python-devel
-    yum install python-pip
-    yum install python-setuptools
-  EOH
-  user 'root'
-  group 'root'
-  returns [0]
-  action 'run'
+yum_package 'Install Python' do
+  package_name [
+    'python-2.7.18',
+    'python-devel',
+    'python-pip',
+    'python-setuptools'
+  ]
+  action 'install'
 end
 
 # Create App directories.

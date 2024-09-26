@@ -7,7 +7,6 @@ supervisor_exec_dir = node['system']['supervisor']['exec_dir']
 
 supervisor_client_path = "#{supervisor_exec_dir}/supervisorctl"
 supervisor_server_path = "#{supervisor_exec_dir}/supervisord"
-supervisor_conf_path = node['system']['supervisor']['conf_path']
 
 # Stop Chef infra client.
 execute 'Stop Chef infra client' do
