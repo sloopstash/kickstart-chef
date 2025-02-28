@@ -1,2 +1,12 @@
 # Kickstart Chef
-Our Chef starter-kit repository contains Chef cookbooks, configurations, and other resources, Docker Compose YAML configurations, and Vagrant VM configurations needed to automate the deployment of workloads in containers, VMs, and host machines.
+Deploy diverse platforms, workloads, and services in cloud or on-premise servers with advanced automation and configuration management using Chef.
+
+
+## Getting started
+Please refer to the [wiki](https://github.com/sloopstash/kickstart-chef/wiki) for detailed instructions on how to get started with our Chef starter-kit.
+
+
+## Get support
+- [Issues](https://github.com/sloopstash/kickstart-chef/issues)
+- [Contact us](https://sloopstash.com/contact.html)
+
